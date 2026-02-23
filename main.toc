@@ -1,0 +1,16 @@
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
+\contentsline {section}{\numberline {1}Motivation \& Objective}{3}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Unmanned Aerial Vehicle (UAV)}{4}{chapter.2}%
+\contentsline {section}{\numberline {1}The Brain: ArduPilot Flight Controller}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {1.1}How to load firmware}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {1.2}Mission Planner}{4}{subsection.2.1.2}%
+\contentsline {chapter}{\numberline {3}Dabble}{6}{chapter.3}%
+\contentsline {section}{\numberline {1}Component Architecture with Dabble}{6}{section.3.1}%
+\contentsline {section}{\numberline {2}Controlling Ground Vehicle with Dabble}{6}{section.3.2}%
+\contentsline {chapter}{\numberline {4}FLYSKY Remote}{8}{chapter.4}%
+\contentsline {section}{\numberline {1}Component Architecture in UGV (FlySky)}{9}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Operating UGV through ArduPilot}{10}{chapter.5}%
+\contentsline {section}{\numberline {1}Integration with L298N Motor Drivers}{10}{section.5.1}%
+\contentsline {subsection}{\numberline {1.1}Setup}{11}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {1.2}Result}{11}{subsection.5.1.2}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
