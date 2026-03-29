@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: references.bib
+Warning--entry type for "ardupilot" isn't style-file defined
+--line 1 of file references.bib
+Warning--entry type for "missionplanner" isn't style-file defined
+--line 9 of file references.bib
+Warning--entry type for "dabble" isn't style-file defined
+--line 25 of file references.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 5 entries,
+            4087 wiz_defined-function locations,
+            846 strings with 7872 characters,
+and the built_in function-call counts, 2198 in all, are:
+= -- 187
+> -- 25
+< -- 0
++ -- 12
+- -- 6
+* -- 104
+:= -- 440
+add.period$ -- 9
+call.type$ -- 5
+change.case$ -- 9
+chr.to.int$ -- 0
+cite$ -- 5
+duplicate$ -- 166
+empty$ -- 181
+format.name$ -- 7
+if$ -- 456
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 41
+newline$ -- 48
+num.names$ -- 5
+pop$ -- 105
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 166
+stack$ -- 0
+substring$ -- 14
+swap$ -- 100
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 5
+warning$ -- 0
+while$ -- 5
+width$ -- 6
+write$ -- 78
+(There were 3 warnings)

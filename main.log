@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.2)  29 MAR 2026 18:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.2)  29 MAR 2026 18:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1010,8 +1010,11 @@ Package: gobble 2019/01/04 v0.2 Provides more gobble macros
 \markdownLaTeXTable=\toks43
 \markdownLaTeXTableAlignment=\toks44
 \markdownLaTeXTableEnd=\toks45
+) (./main.aux
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
 )
-No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
@@ -1032,6 +1035,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
+
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1057,32 +1061,23 @@ e
 ))
 \c@lstlisting=\count351
 Package hyperref Info: Link coloring OFF on input line 56.
+
+(./main.out) (./main.out)
 \@outlinefile=\write7
 \openout7 = `main.out'.
 
-
-
-LaTeX Warning: Citation `ardupilot' on page 1 undefined on input line 133.
-
-
-LaTeX Warning: Citation `missionplanner' on page 1 undefined on input line 136.
-
-
-<figs/Mission planner.png, id=7, 1284.8pt x 764.8575pt>
+<figs/Mission planner.png, id=69, 1284.8pt x 764.8575pt>
 File: figs/Mission planner.png Graphic file (type png)
 <use figs/Mission planner.png>
 Package pdftex.def Info: figs/Mission planner.png  used on input line 139.
 (pdftex.def)             Requested size: 201.60077pt x 120.01053pt.
-
-LaTeX Warning: Citation `flysky' on page 1 undefined on input line 144.
-
-<figs/flysky.jpg, id=9, 1204.5pt x 1204.5pt>
+<figs/flysky.jpg, id=72, 1204.5pt x 1204.5pt>
 File: figs/flysky.jpg Graphic file (type jpg)
 <use figs/flysky.jpg>
 Package pdftex.def Info: figs/flysky.jpg  used on input line 147.
 (pdftex.def)             Requested size: 226.79846pt x 226.7989pt.
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/base/8r.enc}
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf
+-dist/fonts/enc/dvips/base/8r.enc}
 
 
 
@@ -1098,17 +1093,14 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.150 \end{figure}
                    <./figs/Mission planner.png>]
-<figs/l298n.png, id=26, 224.84pt x 225.84375pt>
+<figs/l298n.png, id=88, 224.84pt x 225.84375pt>
 File: figs/l298n.png Graphic file (type png)
 <use figs/l298n.png>
 Package pdftex.def Info: figs/l298n.png  used on input line 164.
 (pdftex.def)             Requested size: 100.79846pt x 101.24966pt.
-
-
-LaTeX Warning: Citation `l298n' on page 2 undefined on input line 169.
-
 LaTeX Font Info:    Trying to load font information for U+msa on input line 171
 .
+
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -1130,9 +1122,6 @@ r
  []
 
 ** WARNING: Ignoring useless \section in Appendix (line 275).
-
-LaTeX Warning: Citation `dabble' on page 2 undefined on input line 277.
-
 [2
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
@@ -1146,13 +1135,13 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.356 \subsection
                  {Setup and Operation} <./figs/flysky.jpg> <./figs/l298n.png>]
-<figs/dabble.png, id=54, 1284.8pt x 579.16376pt>
+<figs/dabble.png, id=112, 1284.8pt x 579.16376pt>
 File: figs/dabble.png Graphic file (type png)
 <use figs/dabble.png>
 Package pdftex.def Info: figs/dabble.png  used on input line 377.
 (pdftex.def)             Requested size: 226.78421pt x 102.23006pt.
 
-No file main.bbl.
+(./main.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1173,26 +1162,17 @@ L3 programming layer <2020/03/25>
  ***********
 
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: There were multiply-defined labels.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  CBF4ABB6067F713018197379EA1094FB;2442.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 862F0A1647F376866F9197794675EC48;2537.
  ) 
 Here is how much of TeX's memory you used:
- 30770 strings out of 474222
- 649533 string characters out of 5748734
+ 30831 strings out of 474222
+ 650374 string characters out of 5748734
  1951975 words of memory out of 5000000
- 52387 multiletter control sequences out of 15000+600000
- 592989 words of font info for 97 fonts, out of 8000000 for 9000
+ 52426 multiletter control sequences out of 15000+600000
+ 596089 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,10n,103p,1190b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -1205,10 +1185,10 @@ exlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (3 pages, 1966142 bytes).
+Output written on main.pdf (3 pages, 1968972 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
- 33 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 173 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
