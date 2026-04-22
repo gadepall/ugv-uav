@@ -393,7 +393,17 @@ A major advantage of this architecture is that the software framework requires a
 % --- END NEW CONTENT ---
 
 Specifically, flashing the ArduRover firmware transitions the APM into a UGV controller by disabling complex 3D flight stabilization algorithms. In this architecture, the APM software acts as a streamlined passthrough—it simply processes the two active radio channels (throttle and steering) and outputs those distinct signals directly to the ESP32 for downstream processing.
+See Appendix \ref{app:misplan}
+for details on code execution.
 
+\section{Conclusions and Future Work}
+We have hence successfully translated the entire UAV architecture into an equivalent UGV architecture across Power, Control, Communication, Mobility, and Software domains.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\appendix
+\section{}
+\label{app:misplan}
 \begin{enumerate}
     \item Open Mission Planner (you might have to use an older version for better compatibility) and flash the \texttt{ArduRover v2.5.1} firmware onto the APM 2.8 flight controller. Custom C++ code is not required for the APM, as the ArduPilot ecosystem provides precompiled stacks in the \href{https://ardupilot.org/}{ArduPilot website}.
     \item Calibrate radio, compass, GPS, accelerometer and servo output in Mission Planner.
@@ -407,10 +417,7 @@ Specifically, flashing the ArduRover firmware transitions the APM into a UGV con
 \fbox{\parbox{0.95\columnwidth}{\url{https://github.com/gadepall/ugv-uav/blob/main/codes/main.ino}
 }}
 
-\vspace{0.5cm}
-We have hence successfully translated the entire UAV architecture into an equivalent UGV architecture across Power, Control, Communication, Mobility, and Software domains.
-
-\appendix
+\iffalse
 \section{Preliminary Testing: Controlling Ground Vehicle with Dabble}
 
 Dabble\cite{dabble} is a mobile application developed by STEMpedia that enables smartphones to function as wireless controllers for microcontroller-based systems such as Arduino, ESP32, and other embedded platforms. It uses Bluetooth communication to connect the smartphone with the hardware, allowing users to control, monitor, and interact with electronic projects in real time.
@@ -512,7 +519,6 @@ Dabble provides a set of pre-built modules that simplify interfacing between har
 \footnotesize \textit{Dabble Gamepad Interface}
 \end{figure}
 
-\bibliographystyle{IEEEtran}
-\bibliography{references}
+\fi
 
 \end{document}

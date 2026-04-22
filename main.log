@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  22 APR 2026 12:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  22 APR 2026 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1335,14 +1335,14 @@ dmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts
 
 LaTeX Warning: Reference `' on page 2 undefined on input line 255.
 
-<figs/l298n.png, id=92, 224.84pt x 225.84375pt>
+<figs/l298n.png, id=88, 224.84pt x 225.84375pt>
 File: figs/l298n.png Graphic file (type png)
 <use figs/l298n.png>
 Package pdftex.def Info: figs/l298n.png  used on input line 259.
 (pdftex.def)             Requested size: 100.79846pt x 101.24966pt.
 
 
-<figs/flysky.jpg, id=94, 1204.5pt x 1204.5pt>
+<figs/flysky.jpg, id=90, 1204.5pt x 1204.5pt>
 File: figs/flysky.jpg Graphic file (type jpg)
 <use figs/flysky.jpg>
 Package pdftex.def Info: figs/flysky.jpg  used on input line 274.
@@ -1358,7 +1358,7 @@ tm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-<figs/Mission planner.png, id=112, 1284.8pt x 764.8575pt>
+<figs/Mission planner.png, id=108, 1284.8pt x 764.8575pt>
 File: figs/Mission planner.png Graphic file (type png)
 <use figs/Mission planner.png>
 Package pdftex.def Info: figs/Mission planner.png  used on input line 385.
@@ -1369,23 +1369,16 @@ LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3
 (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ot1p
 cr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Underfull \hbox (badness 1383) in paragraph at lines 398--399
+) (./main.bbl)
+** WARNING: Ignoring useless \section in Appendix (line 405).
+
+Underfull \hbox (badness 1383) in paragraph at lines 408--409
 []\OT1/ptm/m/n/10 Open Mis-sion Plan-ner (you might have to use an
  []
 
-** WARNING: Ignoring useless \section in Appendix (line 414).
 
 
 [3 <./figs/Mission planner.png>]
-<figs/dabble.png, id=135, 1284.8pt x 579.16376pt>
-File: figs/dabble.png Graphic file (type png)
-<use figs/dabble.png>
-Package pdftex.def Info: figs/dabble.png  used on input line 510.
-(pdftex.def)             Requested size: 226.78421pt x 102.23006pt.
-(./main.bbl
-
-)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1399,7 +1392,11 @@ Before submitting the final camera ready copy, remember to:
 
 
 
-[4 <./figs/dabble.png>] (./main.aux)
+
+
+[4
+
+] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -1408,13 +1405,13 @@ L3 programming layer <2020/03/25>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E54D26FE3C03036C548BF74B7CEBAF97;2559.
+(rerunfilecheck)             Checksum: BC29AA641482A903CB1B0490A4A1C93C;2330.
  ) 
 Here is how much of TeX's memory you used:
- 32558 strings out of 473190
- 688080 string characters out of 5704335
- 1068061 words of memory out of 5000000
- 55121 multiletter control sequences out of 15000+600000
+ 32528 strings out of 473190
+ 687577 string characters out of 5704335
+ 1068054 words of memory out of 5000000
+ 55099 multiletter control sequences out of 15000+600000
  599805 words of font info for 117 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,12n,123p,1190b,1013s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1429,10 +1426,10 @@ ts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/te
 xmf-dist/fonts/type1/urw/times/utmbi8a.pfb></opt/homebrew/Cellar/texlive/202503
 08_1/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></opt/homebrew/Cellar/te
 xlive/20250308_1/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (4 pages, 1992117 bytes).
+Output written on main.pdf (4 pages, 1951598 bytes).
 PDF statistics:
- 206 PDF objects out of 1000 (max. 8388607)
- 174 compressed objects within 2 object streams
- 47 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 148 words of extra memory for PDF output out of 10000 (max. 10000000)
 

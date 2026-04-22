@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1776839410.6305 "main.aux" "main.bbl" "main" 1776839411.99002 0
+["bibtex main"] 1776857858.24774 "main.aux" "main.bbl" "main" 1776857859.56644 0
   "./references.bib" 1776833859.45892 2520 ebb21bf6a500c6c1fde7d648cc7e82b3 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1741388039 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "main.aux" 1776839411.85282 4315 22fcbf71e9e07a7a4bd960b7bfc4cc4c "pdflatex"
+  "main.aux" 1776857859.43292 4180 55b34e8c0dba79f501914fbd95ed0b43 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1776839410.67146 "main.tex" "main.pdf" "main" 1776839411.99011 0
+["pdflatex"] 1776857858.32237 "main.tex" "main.pdf" "main" 1776857859.56653 0
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1741388039 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1741388039 5466553 2748998d7db8078826afa1f272036265 ""
@@ -270,13 +270,12 @@
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/web2c/texmf.cnf" 1741388039 42151 79f67285bdd95beca4d137b380b4b9e5 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1741388039 3346141 1288109d02d1c772df65535881471649 ""
   "figs/Mission planner.png" 1776754172.03111 1549904 4cf2fd73a9674e155398506d63ba98c9 ""
-  "figs/dabble.png" 1776754172.03172 45223 9da48040a43467cf565b78c84bdd52cc ""
   "figs/flysky.jpg" 1776754172.03221 131939 9a113f9948ba643228252a5c402f7353 ""
   "figs/l298n.png" 1776754172.03234 9573 7ba84402f72b5315dd3272ad7c99c84f ""
-  "main.aux" 1776839411.85282 4315 22fcbf71e9e07a7a4bd960b7bfc4cc4c "pdflatex"
-  "main.bbl" 1776839410.6693 3226 9b220911bda523b11a02fae33a2fc354 "bibtex main"
-  "main.out" 1776839411.85339 2559 e54d26fe3c03036c548bf74b7cebaf97 "pdflatex"
-  "main.tex" 1776839407.05481 26586 d1807b2e0dcac14c12dd0ee199072dff ""
+  "main.aux" 1776857859.43292 4180 55b34e8c0dba79f501914fbd95ed0b43 "pdflatex"
+  "main.bbl" 1776857858.32028 2992 a14730e0fd87a6cd314ac0b9bb93be29 "bibtex main"
+  "main.out" 1776857859.43345 2330 bc29aa641482a903cb1b0490a4a1c93c "pdflatex"
+  "main.tex" 1776857854.32778 26715 46a1c278d128413faccb341e8bbf5910 ""
   (generated)
   "main.aux"
   "main.log"

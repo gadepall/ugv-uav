@@ -68,11 +68,4 @@ M.~Oborne and {ArduPilot Development Team}, ``Mission planner: Ground control
   \url{https://ardupilot.org/planner/}
 \BIBentrySTDinterwordspacing
 
-\bibitem{dabble}
-\BIBentryALTinterwordspacing
-{STEMpedia}, ``Dabble: Smartphone app for diy projects,'' 2024, accessed:
-  2024-05-19. [Online]. Available:
-  \url{https://thestempedia.com/product/dabble/}
-\BIBentrySTDinterwordspacing
-
 \end{thebibliography}
