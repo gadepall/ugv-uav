@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2025/Homebrew)
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: IEEEtran.bst
@@ -19,45 +19,45 @@ Warning--entry type for "dabble" isn't style-file defined
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 5 entries,
+You've used 8 entries,
             4087 wiz_defined-function locations,
-            846 strings with 7872 characters,
-and the built_in function-call counts, 2198 in all, are:
-= -- 187
-> -- 25
-< -- 0
-+ -- 12
-- -- 6
-* -- 104
-:= -- 440
-add.period$ -- 9
-call.type$ -- 5
-change.case$ -- 9
+            868 strings with 8784 characters,
+and the built_in function-call counts, 3982 in all, are:
+= -- 367
+> -- 45
+< -- 5
++ -- 22
+- -- 11
+* -- 181
+:= -- 755
+add.period$ -- 16
+call.type$ -- 8
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 166
-empty$ -- 181
-format.name$ -- 7
-if$ -- 456
+cite$ -- 8
+duplicate$ -- 317
+empty$ -- 323
+format.name$ -- 14
+if$ -- 874
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 41
-newline$ -- 48
-num.names$ -- 5
-pop$ -- 105
+int.to.str$ -- 8
+missing$ -- 69
+newline$ -- 57
+num.names$ -- 8
+pop$ -- 153
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 166
+skip$ -- 321
 stack$ -- 0
-substring$ -- 14
-swap$ -- 100
-text.length$ -- 0
+substring$ -- 43
+swap$ -- 211
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 5
+type$ -- 8
 warning$ -- 0
-while$ -- 5
-width$ -- 6
-write$ -- 78
+while$ -- 10
+width$ -- 9
+write$ -- 111
 (There were 3 warnings)

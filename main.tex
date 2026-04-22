@@ -67,6 +67,8 @@ In this paper, we integrate various components of an unmanned air vehicle (UAV) 
 
 Our goal is to take a drone with a standard multicopter architecture, and try to integrate each component, part by part into a ground vehicle. Traditional UAVs rely on high-RPM brushless motors, Electronic Speed Controllers (ESCs), and specialized flight controllers. While components like the power delivery systems and radio transmitters are universally applicable, others—such as the motor control mechanisms—require adaptation for ground use.
 
+Recent advancements in autonomous systems emphasize the development of unified, cross-domain control architectures. While open-source flight stacks like ArduPilot and Pixhawk are ubiquitous in Unmanned Aerial Vehicles (UAVs), their robust navigation and telemetry algorithms are increasingly being adapted to retrofit off-the-shelf ground chassis into autonomous Unmanned Ground Vehicles (UGVs) \cite{darweesh2024initial}. Leveraging a shared architectural ecosystem not only reduces development overhead but also facilitates seamless heterogeneous collaboration, allowing UAVs and UGVs to operate within the same centralized mission framework \cite{castro2024heterogeneous}. However, directly translating a flight-oriented architecture to a ground-based platform introduces significant hardware-level challenges. Specifically, the high-frequency PWM signals designed for aerial Electronic Speed Controllers (ESCs) must be computationally translated into logic-level inputs suitable for standard UGV motor drivers \cite{silva2019implementation}. Our work addresses this gap by detailing the exact middleware translation required to bridge these two domains.
+
 \bigskip
     \begin{figure}[H]
     \resizebox{0.95\columnwidth}{!}{

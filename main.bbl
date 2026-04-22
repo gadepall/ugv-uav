@@ -21,6 +21,27 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{darweesh2024initial}
+C.~L. Darweesh \emph{et~al.}, ``Initial prototyping of a low-cost unoccupied
+  ground vehicle platform for crop problem risk and severity mapping in
+  agricultural fields,'' in \emph{Autonomous Air and Ground Sensing Systems for
+  Agricultural Optimization and Phenotyping IX}, vol. 13475.\hskip 1em plus
+  0.5em minus 0.4em\relax SPIE, 2024, p. 134750I, demonstrates the direct
+  application of an ArduPilot Pixhawk flight controller to modify an RC car
+  into a functional UGV.
+
+\bibitem{castro2024heterogeneous}
+L.~Castro \emph{et~al.}, ``Heterogeneous multi-robot collaboration for coverage
+  path planning in partially known dynamic environments,'' \emph{Machines},
+  vol.~12, no.~3, p. 200, 2024, highlights the necessity of shared control
+  architectures for UAV and UGV cooperation.
+
+\bibitem{silva2019implementation}
+G.~Silva, ``Implementation of an autopilot for uav/ugv systems based on android
+  smartphone,'' Master's thesis, Politecnico di Torino, 2019, discusses the
+  integration of autopilot logic, middleware, and standard microcontroller
+  hardware for cross-domain vehicles.
+
 \bibitem{l298n}
 \BIBentryALTinterwordspacing
 {STMicroelectronics}, \emph{L298 Dual Full-Bridge Driver Datasheet},
