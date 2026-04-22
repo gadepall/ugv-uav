@@ -539,24 +539,24 @@ INPUT ./figs/flysky.jpg
 INPUT ./figs/flysky.jpg
 INPUT ./figs/flysky.jpg
 INPUT ./figs/flysky.jpg
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmbi7t.vf
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm
 INPUT ./figs/Mission planner.png
 INPUT ./figs/Mission planner.png
 INPUT ./figs/Mission planner.png
@@ -567,8 +567,6 @@ INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT ./figs/dabble.png

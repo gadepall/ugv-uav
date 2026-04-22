@@ -262,7 +262,12 @@ Transforming this for a UGV required a complete power system overhaul. We discar
 \end{figure}
 
 \subsection{Communication:Flysky Radio System}
-The Flysky FS-i6\cite{flysky} is a 2.4 GHz wireless radio transmitter used for remote control of electronic systems such as drones, robots, RC cars, airplanes, and embedded systems. It is part of the Flysky radio control ecosystem and works together with compatible receivers (such as FS-iA6 or FS-iA6B) to transmit user commands wirelessly to a microcontroller or motor control system. The FS-i6 converts physical inputs from joysticks, switches, and knobs into digital signals, which are transmitted using the AFHDS 2A (Automatic Frequency Hopping Digital System) protocol. The receiver connected to the robot or vehicle interprets these signals and generates corresponding control signals to motors, servos, or microcontrollers.
+The Flysky FS-i6\cite{flysky} is the transceiver used in most elementary UAV systems. It converts physical inputs from the joystick into digital signals, which are transmitted using the AFHDS 2A (Automatic Frequency Hopping Digital System) protocol. The receiver connected to the robot or vehicle interprets these signals and generates corresponding control signals to motors, servos, or microcontrollers.
+Because the ground vehicle operates with reduced physical degrees of freedom, the control inputs are drastically simplified. When flying a drone, the system requires continuous input across at least four to six radio channels to manage complex multi-axis flight dynamics and flight modes. For the UGV twin, these multi-axis commands are reduced to just two essential channels: throttle (forward/reverse speed) and steering (left/right turning). The remaining channels provided by the FS-i6 radio are effectively bypassed, streamlining the overall control logic before it even reaches the motor drivers.
+%The FS-i6 radio system can be reliably used in both the drone framework and the ground vehicle framework. The range of this system is around 500m-1000m in clear air (without obstacles in between). 
+We have tested the radio system for up to 70m.
+
+%a 2.4 GHz wireless radio transmitter used for remote control of electronic systems such as drones, robots, RC cars, airplanes, and embedded systems. It is part of the Flysky radio control ecosystem and works together with compatible receivers (such as FS-iA6 or FS-iA6B) to transmit user commands wirelessly to a microcontroller or motor control system. 
 
 \begin{figure}[H]
     \centering
@@ -271,28 +276,10 @@ The Flysky FS-i6\cite{flysky} is a 2.4 GHz wireless radio transmitter used for r
     \label{fig:flysky}
 \end{figure}
 
-The FS-i6 radio system can be reliably used in both the drone framework and the ground vehicle framework. The range of this system is around 500m-1000m in clear air (without obstacles in between). We have tested the radio system up to 70m.
 
-\subsection{Control}
-Because the ground vehicle operates with reduced physical degrees of freedom, the control inputs are drastically simplified. When flying a drone, the system requires continuous input across at least four to six radio channels to manage complex multi-axis flight dynamics and flight modes. For the UGV twin, these multi-axis commands are reduced to just two essential channels: throttle (forward/reverse speed) and steering (left/right turning). The remaining channels provided by the FS-i6 radio are effectively bypassed, streamlining the overall control logic before it even reaches the motor drivers.
-\subsection{Integration with L298N Motor Drivers}
-
-The system architecture follows a sequential control flow from the APM 2.8 flight controller, through an ESP32 microcontroller, to an L298N motor driver\cite{l298n}, which ultimately powers the DC motors. 
-
-\subsubsection{\textbf{The Signal Translation Challenge}}
-A direct connection between the APM and the motor driver is not feasible due to a fundamental signal mismatch. Specifically, the APM 2.8 outputs standard RC servo PWM pulses ranging from 1000~$\mu$s to 2000~$\mu$s, whereas the L298N driver requires logic-level directional inputs (HIGH/LOW) and standard duty-cycle PWM (0--100\%) to regulate speed. 
-
-% --- NEW CONTENT ADDED: Control transformation context ---
-This highlights a major control paradigm shift between domains. In a UAV, the APM sends high-frequency PWM signals directly to an ESC, which inherently understands those pulses and converts them into 3-phase AC for brushless flight motors. To replicate this control authority in a UGV using standard DC motors, we had to introduce middleware.
-% --- END NEW CONTENT ---
-
-\subsubsection{\textbf{ESP32 as a Middleware Controller}}
-To bridge this gap, the ESP32 functions as a dedicated signal translator and skid steering mixer. Since the ArduPilot simply passes through raw throttle and steering channel outputs, the ESP32 continuously reads these incoming pulse widths and maps them into directional commands (e.g., 1000–1450 µs for reverse, 1450–1550 µs as a neutral deadband, and 1550–2000 µs for forward). Concurrently, the middleware mathematically combines these two signals to calculate proportional PWM duty cycles for the left and right motor banks. For example, a simultaneous forward and right-steering input prompts the code to increase the left L298N channels while reducing the right, seamlessly executing precise differential drive locomotion.
-
-\section{Mobility}
-Due to low torque and high RPM, we concluded that the drone motors cannot directly be used in a ground vehicle framework. Though it might work for certain surfaces, we did not test the effectiveness of this approach. We instead use geared DC Motors (via a motor driver). 
-
-Furthermore, transitioning from a UAV to a UGV fundamentally alters the system's degrees of freedom (DoF). A drone operates in three-dimensional space, requiring complex physical control over pitch, roll, yaw, and altitude. A ground twin, however, is constrained to a 2D planar surface. This physical limitation inherently removes multiple degrees of freedom, simplifying the mobility dynamics entirely to planar translation and rotation.
+\section{Mobiity}
+\subsection{Degrees of Freedom}
+Transitioning from a UAV to a UGV fundamentally alters the system's degrees of freedom (DoF). A drone operates in three-dimensional space, requiring complex physical control over pitch, roll, yaw, and altitude. A ground twin, however, is constrained to a 2D planar surface. This physical limitation inherently removes multiple degrees of freedom, simplifying the mobility dynamics entirely to planar translation and rotation.
 
 \begin{figure}[H]
     \centering
@@ -364,9 +351,28 @@ Furthermore, transitioning from a UAV to a UGV fundamentally alters the system's
         \caption*{Left Speed $>$ Right Speed}
     \end{subfigure}
     \caption{Skid Steering Visualization}
+    \label{fig:skid}
 \end{figure}
 
-Because of this planar constraint, the UGV employs a skid steering (differential drive) physical configuration. Instead of using a complex mechanical steering rack like a traditional car, the vehicle turns by varying the speed and direction of the left and right motor banks independently. A forward command drives all wheels equally, while a steering command creates differential thrust—driving one side faster or in reverse relative to the other—allowing the vehicle to pivot in place or carve turns efficiently.
+    
+Because of this planar constraint, the UGV employs a skid steering (differential drive) physical configuration (see Fig. \ref{fig:skid}). Instead of using a complex mechanical steering rack like a traditional car, the vehicle turns by varying the speed and direction of the left and right motor banks independently. A forward command drives all wheels equally, while a steering command creates differential thrust—driving one side faster or in reverse relative to the other—allowing the vehicle to pivot in place or carve turns efficiently.
+\subsection{Integration with L298N Motor Drivers}
+
+The system architecture follows a sequential control flow from the APM 2.8 flight controller, through an ESP32 microcontroller, to an L298N motor driver\cite{l298n}, which ultimately powers the DC motors. 
+
+\subsubsection{The Signal Translation Challenge}
+A direct connection between the APM and the motor driver is not feasible due to a fundamental signal mismatch. Specifically, the APM 2.8 outputs standard RC servo PWM pulses ranging from 1000~$\mu$s to 2000~$\mu$s, whereas the L298N driver requires logic-level directional inputs (HIGH/LOW) and standard duty-cycle PWM (0--100\%) to regulate speed. 
+
+% --- NEW CONTENT ADDED: Control transformation context ---
+This highlights a major control paradigm shift between domains. In a UAV, the APM sends high-frequency PWM signals directly to an ESC, which inherently understands those pulses and converts them into 3-phase AC for brushless flight motors. To replicate this control authority in a UGV using standard DC motors, we had to introduce middleware.
+% --- END NEW CONTENT ---
+
+\subsubsection{ESP32 as a Middleware Controller}
+To bridge this gap, the ESP32 functions as a dedicated signal translator and skid steering mixer. Since the ArduPilot simply passes through raw throttle and steering channel outputs, the ESP32 continuously reads these incoming pulse widths and maps them into directional commands (e.g., 1000–1450 µs for reverse, 1450–1550 µs as a neutral deadband, and 1550–2000 µs for forward). Concurrently, the middleware mathematically combines these two signals to calculate proportional PWM duty cycles for the left and right motor banks. For example, a simultaneous forward and right-steering input prompts the code to increase the left L298N channels while reducing the right, seamlessly executing precise differential drive locomotion.
+
+%\section{Mobility}
+%Due to low torque and high RPM, we concluded that the drone motors cannot directly be used in a ground vehicle framework. Though it might work for certain surfaces, we did not test the effectiveness of this approach. We instead use geared DC Motors (via a motor driver). 
+
 
 \section{Software}
 \subsection{ArduPilot \& Mission Planner}
