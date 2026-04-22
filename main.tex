@@ -14,6 +14,7 @@
 \usepackage{float}
 \usepackage{tkz-euclide}
 \usepackage[citations,hybrid]{markdown}
+\usepackage{subcaption}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -45,12 +46,13 @@
   }
 }
 
-\title{UGV-UAV}
+\title{UGV: Ground Twin of the UAV}
 
 \author{
     \IEEEauthorblockN{Jnanesh Sathisha Karmar, Vivek K Kumar, \\
     Dr. G.V.V. Sharma}
     \IEEEauthorblockA{Department of Electrical Engineering, \\Indian Institute of Technology Hyderabad,\\ Kandi, India 502284 \\ gadepall@ee.iith.ac.in}
+    
 }
 
 \begin{document}
@@ -62,7 +64,7 @@ This work aims to integrate UAV architecture into a UGV platform to develop a un
 
 \section{Introduction}
 
-Our goal is to take a drone with a standard multicopter architecture, and try to integrate each component, part by part into a ground vehicle.drone architecture and integrate its core components into a ground-based vehicle. Traditional UAVs rely on high-RPM brushless motors, Electronic Speed Controllers (ESCs), and specialized flight controllers.While components like the power delivery systems and radio transmitters are universally applicable, others—such as the motor control mechanisms—require adaptation for ground use
+Our goal is to take a drone with a standard multicopter architecture, and try to integrate each component, part by part into a ground vehicle. Traditional UAVs rely on high-RPM brushless motors, Electronic Speed Controllers (ESCs), and specialized flight controllers. While components like the power delivery systems and radio transmitters are universally applicable, others—such as the motor control mechanisms—require adaptation for ground use.
 
 \bigskip
     \begin{figure}[H]
@@ -97,7 +99,11 @@ Our goal is to take a drone with a standard multicopter architecture, and try to
 
     % Components
     \node [block] (fc) {ArduPilot Flight Controller};
-    \node [block, right=2cm of fc] (esc) {ESC};
+    
+    % --- NEW CONTENT ADDED: Explicitly naming the SimonK ESC used in the drone ---
+    \node [block, right=2cm of fc] (esc) {30A ESC};
+    % --- END NEW CONTENT ---
+    
     \node [block, above=1.5cm of esc] (compass) {Compass and GPS (Nav)};
     \node [block, above=1.3cm of fc] (radio) {FS-i6 Radio (Manual mode)};
     \node [block, below=1.5cm of fc] (batt) {11.1V 3S LiPo Battery};
@@ -116,86 +122,26 @@ Our goal is to take a drone with a standard multicopter architecture, and try to
     \path [power] (batt) -| node[pos=0.2, below, font=\footnotesize] {High Current DC} (esc);
 \end{tikzpicture}
 }
-\caption{Drone architecture}
+\caption{Original Drone Architecture}
 \label{fig:da}
 \end{figure}
 
-The FS-i6 radio system can be reliably used in both the drone framework and the ground vehicle framework. The range of this system is around 500m-1000m in clear air (without obstacles in between).
+Keeping the differences in mind, we integrate each of these components into the ground vehicle framework.
 
-The same DC power source can be used for both frameworks. The 3S LiPo batteries used in the system are highly versatile.
-
-Due to low torque and high RPM, we concluded that the drone motors cannot directly be used in a ground vehicle framework. Though it might work for certain surfaces, we did not test the effectiveness of this approach. We instead use geared DC Motors (via a motor driver). 
-Keeping this in mind, we integrate each of these components into the ground vehicle framework.
-
-
-\section{Background \& System Components}
-\subsection{ArduPilot \& Mission Planner}
-ArduPilot\cite{ardupilot} is a versatile autopilot system for multicopters, rovers, boats, and planes. It reads sensors (gyro, GPS)  to controls motors. One of its key advantages is it's ability to handle both high-speed flight stabilization and precise ground steering.This enables the same hardware to be used both as a  flight controller and a ground vehicle controller.
-
-
-Mission Planner\cite{missionplanner} is a free, open-source Ground Control Station (GCS) software used to configure, monitor, and control autonomous vehicles such as drones, planes, rovers, and boats that run on ArduPilot firmware. It provides a graphical interface to communicate with the flight controller through USB or telemetry radios. Mission Planner allows users to upload flight missions, set waypoints, tune parameters, calibrate sensors, and monitor real-time flight data such as altitude, speed, GPS position, and battery status.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{figs/Mission planner.png}
-    \caption{Mission Planner interface}
-    \label{fig:placeholder}
-\end{figure}
-\subsection{Flysky Radio System}
-The Flysky FS-i6\cite{flysky} is a 2.4 GHz wireless radio transmitter used for remote control of electronic systems such as drones, robots, RC cars, airplanes, and embedded systems. It is part of the Flysky radio control ecosystem and works together with compatible receivers (such as FS-iA6 or FS-iA6B) to transmit user commands wirelessly to a microcontroller or motor control system.The FS-i6 converts physical inputs from joysticks, switches, and knobs into digital signals, which are transmitted using the AFHDS 2A (Automatic Frequency Hopping Digital System) protocol. The receiver connected to the robot or vehicle interprets these signals and generate corresponding control signals to motors, servos, or microcontrollers.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\columnwidth]{figs/flysky.jpg}
-    \caption{flysky remote}
-    \label{fig:placeholder}
-\end{figure}
-
-
-\section{UAV to UGV Integration}
-
-% \subsection{How to load firmware}
-% It is not necessary to write C++ code from scratch to run the microcontroller. Precompiled firmware is available in the \hyperlink{https://ardupilot.org/}{ArduPilot website}, from which Flash specific stacks (e.g., ArduCopter/ArduRover) can be flashed into ArduPilot via Mission Planner.
-% Mission Planner can also be used to configure initial parameters(e.g., Radio calibration, ESC calibration) to get the UAV ready for flight.
-
-\subsection{Integration with L298N Motor Drivers}
-% \subsection{The Signal Translation Challenge}
+% --- NEW CONTENT ADDED: System Overview section to hold the new unified diagram ---
+\section{System Overview}
+To successfully transition from flight to ground, the components shown in Fig \ref{fig:da} must be re-routed. Below is the final, unified UGV architecture showing the new data and power workflows, utilizing the ArduPilot, an ESP32 translator, an LM2596 buck converter, and L298N drivers. 
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\linewidth]{figs/l298n.png}
-    \caption{L298N}
-    \label{fig:l298n}
-\end{figure}
-
-The system architecture follows a sequential control flow from the APM 2.8 flight controller, through an ESP32 microcontroller, to an L298N motor driver\cite{l298n}, which ultimately powers the DC motors. 
-\subsubsection{\textbf{The Signal Translation Challenge}}
-A direct connection between the APM and the motor driver is not feasible due to a fundamental signal mismatch. Specifically, the APM 2.8 outputs standard RC servo PWM pulses ranging from 1000~$\mu$s to 2000~$\mu$s, whereas the L298N driver requires logic-level directional inputs (HIGH/LOW) and standard duty-cycle PWM (0--100\%) to regulate speed. 
-\subsubsection{\textbf{ESP32 as a Middleware Controller}}
-To bridge this gap, the ESP32 functions as a dedicated signal translator. It continuously reads the incoming pulse widths from the APM's throttle and steering outputs and mathematically maps these values to the required motor driver formats. For example, the ESP32 is programmed to interpret a signal of 1000--1450~$\mu$s as a reverse command, 1450--1550~$\mu$s as a neutral deadband for stopping or braking, and 1550--2000~$\mu$s as forward motion. Based on this real-time mapping, the ESP32 drives the appropriate pins on the L298N to achieve precise locomotion.
-
-\subsection{Setup}
-\begin{enumerate}
-    \item Open Mission Planner and flash the \texttt{ArduRover v2.5.1} firmware onto the APM 2.8 flight controller. Custom C++ code is not required for the APM, as the ArduPilot ecosystem provides precompiled stacks in the \hyperlink{https://ardupilot.org/}{ArduPilot website}.
-    \item Calibrate radio, compass, GPS, accelerometer and servo output in Mission Planner
-    \item Wire APM 2.8 as follows:
-    \begin{itemize}
-        \item Inputs: Connect radio receiver and GPS/Compass module. Also power it up through the 5V L298N motor driver line.
-        \item Outputs: Connect signal lines of 1 and 3 to ESP32. 
-    \end{itemize}
-    \item Upload the code into the ESP32 from the following repository
-\end{enumerate}
-\fbox{\parbox{0.95\columnwidth}{\url{https://github.com/Vivek-Kumar-1907/blob/main/codes/main.ino}
-}}
-
-\subsection{Summary Architecture (FlySky)}
-\resizebox{0.9\columnwidth}{!}{
+\resizebox{0.95\columnwidth}{!}{
 \begin{tikzpicture}[
-    node distance=1.5cm and 1.2cm,
+    node distance=1.2cm and 1.2cm,
     auto,
     block/.style={
         rectangle,
         draw,
         fill=cyan!10,
-        text width=1.3cm,
+        text width=1.4cm,
         text centered,
         rounded corners,
         minimum height=3em,
@@ -224,52 +170,236 @@ To bridge this gap, the ESP32 functions as a dedicated signal translator. It con
 ]
 
     % --- Top Row: Control Flow ---
-    \node [block] (esp) {ESP32 Controller};
-    \node [block, left=1.8cm of esp] (rx) {Receiver (FS-iA6B)};
-    \node [block, left=1.8cm of rx] (tx) {FlySky Transmitter};
+    \node [block] (tx) {FlySky Transmitter};
+    \node [block, below=1.2cm of tx] (rx) {Receiver (FS-iA6B)};
+    \node [block, right=1.2cm of rx] (apm) {APM 2.8 \& Nav};
+    \node [block, right=1.8cm of apm] (esp) {ESP32 Controller};
 
     % --- Bottom Row: Power & Drive ---
-    % Align Driver below ESP32
-    \node [block, below=2cm of esp] (driver) {L298N Driver};
-    % Align Battery below Receiver
-    \node [block, below=2cm of rx] (batt) {Battery Source};
-    
-    % Motors and Wheels to the right
-    \node [block, right=1.8cm of driver] (motor) {4x DC Motors};
-    \node [block, right=of motor] (wheel) {Wheels};
+    \node [block, below=2cm of rx] (batt) {11.1V 3S LiPo};
+    \node [block, right=1.2cm of batt] (buck) {LM2596 Buck (5V)};
+    \node [block, right=1.8cm of buck] (driver) {L298N Driver};
+    \node [block, right=1.2cm of driver] (motor) {Geared DC Motors};
 
     % --- Connections ---
 
     % 1. Wireless Control (Tx -> Rx)
-    \path [wireless] (tx) -- node[above, font=\footnotesize] {2.4GHz} (rx);
+    \path [wireless] (tx) -- node[right, font=\footnotesize] {2.4GHz} (rx);
 
-    % 2. Receiver Signal (Rx -> ESP32)
-    \path [line] (rx) -- node[above, font=\footnotesize] {Pulse} (esp);
+    % 2. Receiver to APM
+    \path [line] (rx) -- node[above, font=\footnotesize] {RC PWM} (apm);
 
-    % 3. Motor Control (ESP32 -> Driver)
+    % 3. APM to ESP32
+    \path [line] (apm) -- node[above, font=\footnotesize] {Servo PWM} (esp);
+
+    % 4. ESP32 to Driver
     \path [line] (esp) -- node[right, font=\footnotesize] {GPIO / PWM} (driver);
-
-    % 4. Power Distribution
-    % Battery -> Driver (Motor Power)
-    \path [power] (batt) -- node[above, font=\footnotesize] {Motor Power} (driver);
     
-    % Battery -> ESP32 (Logic Power) - Path goes Up then Right
-    \path [power] (batt) -- node[sloped, above, font=\footnotesize] {Logic Power} (esp);
-    
-    % Battery -> Receiver (Optional explicit power line, or simplified via ESP)
-    % Here we show a small branch for Rx power for completeness
-    \path [power] (batt) -- (rx); 
-
-    % 5. Drive Output
+    % 5. Driver to Motor
     \path [line] (driver) -- node[above, font=\footnotesize] {DC Drive} (motor);
-    \path [line] (motor) -- node[above, font=\footnotesize] {Torque} (wheel);
+
+    % 6. Power Distribution (Battery)
+    \path [power] (batt) -- node[above, font=\footnotesize] {11.1V DC} (buck);
+    
+    % Battery to L298N (Bypass buck for motors)
+    \path [power] (batt) to[out=-30, in=-150] node[below, font=\footnotesize] {11.1V \& High Current} (driver);
+    
+    % 7. Power Distribution (LM2596 5V)
+    \path [power] (buck) -- node[right, font=\footnotesize] {5V Power} (apm);
+    \path [power] (buck) -- node[sloped, below, font=\footnotesize] {5V Power} (esp);
+    
+    % Rx gets power from APM rail
+    \path [power] (apm) to[out=135, in=45] node[above, font=\footnotesize] {5V Rail} (rx);
 
 \end{tikzpicture}
 }
+\caption{Integrated UGV Ground Twin Architecture}
+\label{fig:ugv_arch}
+\end{figure}
+% --- END NEW CONTENT ---
 
-\subsection{Result}
-We have hence successfully translated the entire UAV architecture into an equivalent UGV architecture.
+\begin{table}[H]
+    \centering
+    \caption{Component List}
+    \label{tab:components}
+    \renewcommand{\arraystretch}{1.3}
+    \resizebox{\columnwidth}{!}{
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Component} & \textbf{Domain} & \textbf{Primary Function} \\
+        \midrule
+        APM 2.8 Flight Controller & Software / Nav & Processes RC inputs and manages GPS/telemetry \\
+        ESP32 Microcontroller & Control & Middleware translator and skid steering mixer \\
+        L298N Motor Driver & Control & Regulates high-current delivery to the wheels \\
+        Geared DC Motors (x4) & Mobility & Replaces brushless air motors for ground traction \\
+        11.1V 3S LiPo Battery & Power & Primary high-capacity power source \\
+        LM2596 Buck Converter & Power & Steps down 11.1V to a stable 5V logic rail \\
+        FlySky FS-i6 Radio & Communication & 2.4 GHz wireless manual transmitter \\
+        FlySky FS-iA6B Receiver & Communication & Receives wireless inputs and outputs RC PWM \\
+        GPS \& Compass Module & Software / Nav & Provides heading and location data to the APM \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}
 
+\section{Power}
+The same DC power source can be used for both frameworks. The 3S LiPo batteries used in the system are highly versatile.
+
+% --- NEW CONTENT ADDED: Transformation context for Power (SimonK, LM2596, 5V routing, Common Ground) ---
+In the original UAV architecture, power distribution relied heavily on SimonK 30A BLDC Electronic Speed Controllers (ESCs), which routed high current directly to brushless motors while often supplying low voltage to the flight controller via a built-in Battery Eliminator Circuit (BEC) or a dedicated UAV Power Module. 
+
+Transforming this for a UGV required a complete power system overhaul. We discarded the SimonK ESCs (as we used different motors here). Instead, the 11.1V output from the 3S LiPo battery is split into two distinct paths. The first path supplies raw 11.1V power directly to the L298N motor driver to satisfy the high-current demands of the geared ground motors. For the second path, we integrated an LM2596 buck converter to step the 11.1V down to a highly stable 5V rail. We used $2000\mu F$ decoupling capacitors. This 5V line is fed directly into the 5V/VIN pin of the ESP32 and is also used to power the APM 2.8 flight controller and its attached peripherals (such as the GPS module). Crucially, because the LM2596 shares a single ground rail, we established a strict common ground connecting the 3S LiPo, the buck converter, the ESP32, the L298N, and the APM 2.8 to prevent logic level drifting and signal errors across the vehicle.
+% --- END NEW CONTENT ---
+
+\section{Control}
+Because the ground vehicle operates with reduced physical degrees of freedom, the control inputs are drastically simplified. When flying a drone, the system requires continuous input across at least four to six radio channels to manage complex multi-axis flight dynamics and flight modes. For the UGV twin, these multi-axis commands are reduced to just two essential channels: throttle (forward/reverse speed) and steering (left/right turning). The remaining channels provided by the FS-i6 radio are effectively bypassed, streamlining the overall control logic before it even reaches the motor drivers.
+\subsection{Integration with L298N Motor Drivers}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figs/l298n.png}
+    \caption{L298N Motor Driver}
+    \label{fig:l298n}
+\end{figure}
+
+The system architecture follows a sequential control flow from the APM 2.8 flight controller, through an ESP32 microcontroller, to an L298N motor driver\cite{l298n}, which ultimately powers the DC motors. 
+
+\subsubsection{\textbf{The Signal Translation Challenge}}
+A direct connection between the APM and the motor driver is not feasible due to a fundamental signal mismatch. Specifically, the APM 2.8 outputs standard RC servo PWM pulses ranging from 1000~$\mu$s to 2000~$\mu$s, whereas the L298N driver requires logic-level directional inputs (HIGH/LOW) and standard duty-cycle PWM (0--100\%) to regulate speed. 
+
+% --- NEW CONTENT ADDED: Control transformation context ---
+This highlights a major control paradigm shift between domains. In a UAV, the APM sends high-frequency PWM signals directly to an ESC, which inherently understands those pulses and converts them into 3-phase AC for brushless flight motors. To replicate this control authority in a UGV using standard DC motors, we had to introduce middleware.
+% --- END NEW CONTENT ---
+
+\subsubsection{\textbf{ESP32 as a Middleware Controller}}
+To bridge this gap, the ESP32 functions as a dedicated signal translator and skid steering mixer. Since the ArduPilot simply passes through raw throttle and steering channel outputs, the ESP32 continuously reads these incoming pulse widths and maps them into directional commands (e.g., 1000–1450 µs for reverse, 1450–1550 µs as a neutral deadband, and 1550–2000 µs for forward). Concurrently, the middleware mathematically combines these two signals to calculate proportional PWM duty cycles for the left and right motor banks. For example, a simultaneous forward and right-steering input prompts the code to increase the left L298N channels while reducing the right, seamlessly executing precise differential drive locomotion.
+
+\section{Communication}
+\subsection{Flysky Radio System}
+The Flysky FS-i6\cite{flysky} is a 2.4 GHz wireless radio transmitter used for remote control of electronic systems such as drones, robots, RC cars, airplanes, and embedded systems. It is part of the Flysky radio control ecosystem and works together with compatible receivers (such as FS-iA6 or FS-iA6B) to transmit user commands wirelessly to a microcontroller or motor control system. The FS-i6 converts physical inputs from joysticks, switches, and knobs into digital signals, which are transmitted using the AFHDS 2A (Automatic Frequency Hopping Digital System) protocol. The receiver connected to the robot or vehicle interprets these signals and generates corresponding control signals to motors, servos, or microcontrollers.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figs/flysky.jpg}
+    \caption{FlySky Remote}
+    \label{fig:flysky}
+\end{figure}
+
+The FS-i6 radio system can be reliably used in both the drone framework and the ground vehicle framework. The range of this system is around 500m-1000m in clear air (without obstacles in between). We have tested the radio system up to 70m.
+
+\section{Mobility}
+Due to low torque and high RPM, we concluded that the drone motors cannot directly be used in a ground vehicle framework. Though it might work for certain surfaces, we did not test the effectiveness of this approach. We instead use geared DC Motors (via a motor driver). 
+
+Furthermore, transitioning from a UAV to a UGV fundamentally alters the system's degrees of freedom (DoF). A drone operates in three-dimensional space, requiring complex physical control over pitch, roll, yaw, and altitude. A ground twin, however, is constrained to a 2D planar surface. This physical limitation inherently removes multiple degrees of freedom, simplifying the mobility dynamics entirely to planar translation and rotation.
+
+\begin{figure}[H]
+    \centering
+    % --- Left Turn Subfigure ---
+    \begin{subfigure}{0.4\columnwidth}
+        \centering
+        \textbf{Turning Left} \\
+        \vspace{0.2cm}
+        \resizebox{\textwidth}{!}{%
+            \begin{tikzpicture}[
+                scale=0.8,
+                wheel/.style={fill=black, minimum width=0.4cm, minimum height=0.8cm},
+                chassis/.style={fill=gray!30, minimum width=1.5cm, minimum height=2.5cm, rounded corners},
+                arrow/.style={->, ultra thick, red, >=latex}
+            ]
+                % Chassis
+                \node[chassis] (body) {};
+                
+                % Wheels
+                \node[wheel, left=0.05cm of body.north west, anchor=north east] (fl) {};
+                \node[wheel, right=0.05cm of body.north east, anchor=north west] (fr) {};
+                \node[wheel, left=0.05cm of body.south west, anchor=south east] (bl) {};
+                \node[wheel, right=0.05cm of body.south east, anchor=south west] (br) {};
+                
+                % Arrows
+                \draw[arrow] (fr.south) -- ++(0, 1.2); 
+                \draw[arrow] (br.south) -- ++(0, 1.2); 
+                \draw[arrow] (fl.north) -- ++(0, -0.8); 
+                \draw[arrow] (bl.north) -- ++(0, -0.8); 
+                
+                % Curved path arrow
+                \draw[->, dashed, blue, thick] (0, -1.5) to[bend right=45] (-1.5, 2);
+            \end{tikzpicture}
+        }
+        \caption*{Right Speed $>$ Left Speed}
+    \end{subfigure}
+    \hfill
+    % --- Right Turn Subfigure ---
+    \begin{subfigure}{0.4\columnwidth}
+        \centering
+        \textbf{Turning Right} \\
+        \vspace{0.2cm}
+        \resizebox{\textwidth}{!}{%
+            \begin{tikzpicture}[
+                scale=0.8,
+                wheel/.style={fill=black, minimum width=0.4cm, minimum height=0.8cm},
+                chassis/.style={fill=gray!30, minimum width=1.5cm, minimum height=2.5cm, rounded corners},
+                arrow/.style={->, ultra thick, red, >=latex}
+            ]
+                % Chassis
+                \node[chassis] (body) {};
+                
+                % Wheels
+                \node[wheel, left=0.05cm of body.north west, anchor=north east] (fl) {};
+                \node[wheel, right=0.05cm of body.north east, anchor=north west] (fr) {};
+                \node[wheel, left=0.05cm of body.south west, anchor=south east] (bl) {};
+                \node[wheel, right=0.05cm of body.south east, anchor=south west] (br) {};
+                
+                % Arrows
+                \draw[arrow] (fl.south) -- ++(0, 1.2); 
+                \draw[arrow] (bl.south) -- ++(0, 1.2); 
+                \draw[arrow] (fr.north) -- ++(0, -0.8); 
+                \draw[arrow] (br.north) -- ++(0, -0.8); 
+                
+                % Curved path arrow
+                \draw[->, dashed, blue, thick] (0, -1.5) to[bend left=45] (1.5, 2);
+            \end{tikzpicture}
+        }
+        \caption*{Left Speed $>$ Right Speed}
+    \end{subfigure}
+    \caption{Skid Steering Visualization}
+\end{figure}
+
+Because of this planar constraint, the UGV employs a skid steering (differential drive) physical configuration. Instead of using a complex mechanical steering rack like a traditional car, the vehicle turns by varying the speed and direction of the left and right motor banks independently. A forward command drives all wheels equally, while a steering command creates differential thrust—driving one side faster or in reverse relative to the other—allowing the vehicle to pivot in place or carve turns efficiently.
+
+\section{Software}
+\subsection{ArduPilot \& Mission Planner}
+ArduPilot\cite{ardupilot} is a versatile autopilot system for multicopters, rovers, boats, and planes. It reads sensors (gyro, GPS) to controls motors. One of its key advantages is its ability to handle both high-speed flight stabilization and precise ground steering. This enables the same hardware to be used both as a flight controller and a ground vehicle controller.
+
+Mission Planner\cite{missionplanner} is a free, open-source Ground Control Station (GCS) software used to configure, monitor, and control autonomous vehicles such as drones, planes, rovers, and boats that run on ArduPilot firmware. It provides a graphical interface to communicate with the flight controller through USB or telemetry radios. Mission Planner allows users to upload flight missions, set waypoints, tune parameters, calibrate sensors, and monitor real-time flight data such as altitude, speed, GPS position, and battery status.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/Mission planner.png}
+    \caption{Mission Planner interface}
+    \label{fig:mission_planner}
+\end{figure}
+
+\subsection{Setup and Transformation}
+% --- NEW CONTENT ADDED: Software transformation context embedded in the setup ---
+A major advantage of this architecture is that the software framework requires almost zero custom rewriting; it merely requires a shift in firmware branches. Rather than loading the \texttt{ArduCopter} firmware used for multi-axis flight stabilization, we transform the APM into a UGV brain simply by installing ground-specific firmware. 
+% --- END NEW CONTENT ---
+
+Specifically, flashing the ArduRover firmware transitions the APM into a UGV controller by disabling complex 3D flight stabilization algorithms. In this architecture, the APM software acts as a streamlined passthrough—it simply processes the two active radio channels (throttle and steering) and outputs those distinct signals directly to the ESP32 for downstream processing.
+
+\begin{enumerate}
+    \item Open Mission Planner (you might have to use an older version for better compatibility) and flash the \texttt{ArduRover v2.5.1} firmware onto the APM 2.8 flight controller. Custom C++ code is not required for the APM, as the ArduPilot ecosystem provides precompiled stacks in the \href{https://ardupilot.org/}{ArduPilot website}.
+    \item Calibrate radio, compass, GPS, accelerometer and servo output in Mission Planner.
+    \item Wire APM 2.8 as follows:
+    \begin{itemize}
+        \item Inputs: Connect radio receiver and GPS/Compass module. % Note: Power is supplied by LM2596.
+        \item Outputs: Connect signal lines of 1 and 3 to ESP32. 
+    \end{itemize}
+    \item Upload the middleware code into the ESP32 from the following repository:
+\end{enumerate}
+\fbox{\parbox{0.95\columnwidth}{\url{https://github.com/gadepall/ugv-uav/blob/main/codes/main.ino}
+}}
+
+\vspace{0.5cm}
+We have hence successfully translated the entire UAV architecture into an equivalent UGV architecture across Power, Control, Communication, Mobility, and Software domains.
 
 \appendix
 \section{Preliminary Testing: Controlling Ground Vehicle with Dabble}
@@ -280,7 +410,7 @@ Dabble provides a set of pre-built modules that simplify interfacing between har
 \subsection{Component Architecture with Dabble}
 \resizebox{0.95\columnwidth}{!}{%
 \begin{tikzpicture}[
-    node distance=1.2cm and 1.2cm, % Reduced spacing for better fit
+    node distance=1.2cm and 1.2cm, 
     auto,
     block/.style={
         rectangle,
@@ -321,15 +451,10 @@ Dabble provides a set of pre-built modules that simplify interfacing between har
     \node [block, left=of esp] (phone) {Smartphone \\ (Dabble App)};
 
     % Bottom Row
-    % Key Change: Place Battery directly BELOW the ESP32 to simplify wiring
     \node [block, below=2cm of esp] (batt) {Battery Source};
-    
-    % Place Driver to the RIGHT of Battery
-    \node [block, right=of batt] (driver) {L293D Driver};
-    
-    % Place Motors/Wheels extending to the right
-    \node [block, right=of driver] (motor) {4x DC Motors};
-    \node [block, right=of motor] (wheel) {Wheels};
+    \node [block, right=2cm of batt] (driver) {L293D Driver};
+    \node [block, below=of driver] (motor) {4x DC Motors};
+    \node [block, left=of motor] (wheel) {Wheels};
 
     % --- Connections ---
     
@@ -343,11 +468,10 @@ Dabble provides a set of pre-built modules that simplify interfacing between har
     \path [power] (batt) -- node[above, font=\footnotesize] {Motor Power} (driver);
 
     % 4. GPIO/PWM Control (Right then Down)
-    % Uses -| to go Horizontal from ESP, then Vertical down to Driver
     \path [line] (esp) -| node[pos=0.2, above, font=\footnotesize] {GPIO/PWM} (driver);
 
     % 5. Drive & Torque
-    \path [line] (driver) -- node[above, font=\footnotesize] {DC Drive} (motor);
+    \path [line] (driver) -- node[right, font=\footnotesize] {DC Drive} (motor);
     \path [line] (motor) -- node[above, font=\footnotesize] {Torque} (wheel);
 
 \end{tikzpicture}

@@ -21,6 +21,19 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{l298n}
+\BIBentryALTinterwordspacing
+{STMicroelectronics}, \emph{L298 Dual Full-Bridge Driver Datasheet},
+  STMicroelectronics, 2000, rev. 13. Accessed: 2026-03-29. [Online]. Available:
+  \url{https://www.st.com/resource/en/datasheet/l298.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{flysky}
+\BIBentryALTinterwordspacing
+{FlySky RC}, ``Flysky radio control systems,'' 2024, accessed: 2024-05-19.
+  [Online]. Available: \url{https://www.flysky-cn.com/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{ardupilot}
 \BIBentryALTinterwordspacing
 {ArduPilot Development Team}, ``Ardupilot: Open source autopilot software,''
@@ -32,19 +45,6 @@
 M.~Oborne and {ArduPilot Development Team}, ``Mission planner: Ground control
   station,'' 2024, accessed: 2024-05-19. [Online]. Available:
   \url{https://ardupilot.org/planner/}
-\BIBentrySTDinterwordspacing
-
-\bibitem{flysky}
-\BIBentryALTinterwordspacing
-{FlySky RC}, ``Flysky radio control systems,'' 2024, accessed: 2024-05-19.
-  [Online]. Available: \url{https://www.flysky-cn.com/}
-\BIBentrySTDinterwordspacing
-
-\bibitem{l298n}
-\BIBentryALTinterwordspacing
-{STMicroelectronics}, \emph{L298 Dual Full-Bridge Driver Datasheet},
-  STMicroelectronics, 2000, rev. 13. Accessed: 2026-03-29. [Online]. Available:
-  \url{https://www.st.com/resource/en/datasheet/l298.pdf}
 \BIBentrySTDinterwordspacing
 
 \bibitem{dabble}

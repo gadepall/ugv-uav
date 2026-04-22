@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.2)  29 MAR 2026 18:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.2)  22 APR 2026 09:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1010,45 +1010,87 @@ Package: gobble 2019/01/04 v0.2 Provides more gobble macros
 \markdownLaTeXTable=\toks43
 \markdownLaTeXTableAlignment=\toks44
 \markdownLaTeXTableEnd=\toks45
-) (./main.aux
-
-LaTeX Warning: Label `fig:placeholder' multiply defined.
-
 )
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen329
+\captionmargin=\dimen330
+\caption@leftmargin=\dimen331
+\caption@rightmargin=\dimen332
+\caption@width=\dimen333
+\caption@indent=\dimen334
+\caption@parindent=\dimen335
+\caption@hangindent=\dimen336
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+Package caption Info: \@makecaption = \long macro:#1#2->\ifx \@captype \@IEEEta
+blestring \footnotesize \bgroup \par \centering \@IEEEtabletopskipstrut {\norma
+lfont \footnotesize #1}\\{\normalfont \footnotesize \scshape #2}\par \addvspace
+ {0.5\baselineskip }\egroup \@IEEEtablecaptionsepspace \else \@IEEEfigurecaptio
+nsepspace \setbox \@tempboxa \hbox {\normalfont \footnotesize {#1.}\nobreakspac
+e \nobreakspace #2}\ifdim \wd \@tempboxa >\hsize \setbox \@tempboxa \hbox {\nor
+malfont \footnotesize {#1.}\nobreakspace \nobreakspace }\parbox [t]{\hsize }{\n
+ormalfont \footnotesize \noindent \unhbox \@tempboxa #2}\else \ifCLASSOPTIONcon
+ference \hbox to\hsize {\normalfont \footnotesize \hfil \box \@tempboxa \hfil }
+\else \hbox to\hsize {\normalfont \footnotesize \box \@tempboxa \hfil }\fi \fi 
+\fi  on input line 1175.
+)
+
+Package caption Warning: Unknown document class (or package),
+(caption)                standard defaults will be used.
+See the caption package documentation for explanation.
+
+\c@caption@flags=\count345
+\c@continuedfloat=\count346
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count347
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count348
+) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count345
-\scratchdimen=\dimen329
+\scratchcounter=\count349
+\scratchdimen=\dimen337
 \scratchbox=\box79
-\nofMPsegments=\count346
-\nofMParguments=\count347
+\nofMPsegments=\count350
+\nofMParguments=\count351
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count348
-\MPscratchDim=\dimen330
-\MPnumerator=\count349
-\makeMPintoPDFobject=\count350
+\MPscratchCnt=\count352
+\MPscratchDim=\dimen338
+\MPnumerator=\count353
+\makeMPintoPDFobject=\count354
 \everyMPtoPDFconversion=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1059,89 +1101,71 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count351
-Package hyperref Info: Link coloring OFF on input line 56.
+\c@lstlisting=\count355
+Package hyperref Info: Link coloring OFF on input line 58.
 
 (./main.out) (./main.out)
 \@outlinefile=\write7
 \openout7 = `main.out'.
 
-<figs/Mission planner.png, id=69, 1284.8pt x 764.8575pt>
-File: figs/Mission planner.png Graphic file (type png)
-<use figs/Mission planner.png>
-Package pdftex.def Info: figs/Mission planner.png  used on input line 139.
-(pdftex.def)             Requested size: 201.60077pt x 120.01053pt.
-<figs/flysky.jpg, id=72, 1204.5pt x 1204.5pt>
-File: figs/flysky.jpg Graphic file (type jpg)
-<use figs/flysky.jpg>
-Package pdftex.def Info: figs/flysky.jpg  used on input line 147.
-(pdftex.def)             Requested size: 226.79846pt x 226.7989pt.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf
--dist/fonts/enc/dvips/base/8r.enc}
-
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.150 \end{figure}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.150 \end{figure}
-                   <./figs/Mission planner.png>]
-<figs/l298n.png, id=88, 224.84pt x 225.84375pt>
-File: figs/l298n.png Graphic file (type png)
-<use figs/l298n.png>
-Package pdftex.def Info: figs/l298n.png  used on input line 164.
-(pdftex.def)             Requested size: 100.79846pt x 101.24966pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 171
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 242
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 171
+LaTeX Font Info:    Trying to load font information for U+msb on input line 242
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texm
+f-dist/fonts/enc/dvips/base/8r.enc}
+
+
+]
+<figs/l298n.png, id=87, 224.84pt x 225.84375pt>
+File: figs/l298n.png Graphic file (type png)
+<use figs/l298n.png>
+Package pdftex.def Info: figs/l298n.png  used on input line 259.
+(pdftex.def)             Requested size: 100.79846pt x 101.24966pt.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
+74.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-77.
+<figs/flysky.jpg, id=90, 1204.5pt x 1204.5pt>
+File: figs/flysky.jpg Graphic file (type jpg)
+<use figs/flysky.jpg>
+Package pdftex.def Info: figs/flysky.jpg  used on input line 282.
+(pdftex.def)             Requested size: 201.60077pt x 201.60107pt.
+
+[2 <./figs/l298n.png> <./figs/flysky.jpg>]
+<figs/Mission planner.png, id=105, 1284.8pt x 764.8575pt>
+File: figs/Mission planner.png Graphic file (type png)
+<use figs/Mission planner.png>
+Package pdftex.def Info: figs/Mission planner.png  used on input line 376.
+(pdftex.def)             Requested size: 201.60077pt x 120.01053pt.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3
+83.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 2698) in paragraph at lines 177--178
-[]\OT1/ptm/m/n/10 Open Mis-sion Plan-ner and flash the \OT1/pcr/m/n/10 ArduRove
-r
+Underfull \hbox (badness 1383) in paragraph at lines 389--390
+[]\OT1/ptm/m/n/10 Open Mis-sion Plan-ner (you might have to use an
  []
 
-** WARNING: Ignoring useless \section in Appendix (line 275).
-[2
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.356 \subsection
-                 {Setup and Operation}
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.356 \subsection
-                 {Setup and Operation} <./figs/flysky.jpg> <./figs/l298n.png>]
-<figs/dabble.png, id=112, 1284.8pt x 579.16376pt>
+** WARNING: Ignoring useless \section in Appendix (line 405).
+[3 <./figs/Mission planner.png>]
+<figs/dabble.png, id=129, 1284.8pt x 579.16376pt>
 File: figs/dabble.png Graphic file (type png)
 <use figs/dabble.png>
-Package pdftex.def Info: figs/dabble.png  used on input line 377.
+Package pdftex.def Info: figs/dabble.png  used on input line 501.
 (pdftex.def)             Requested size: 226.78421pt x 102.23006pt.
-
-(./main.bbl)
+ (./main.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1153,42 +1177,34 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3
-
- <./figs/dabble.png>] (./main.aux)
+[4 <./figs/dabble.png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 862F0A1647F376866F9197794675EC48;2537.
+(rerunfilecheck)             Checksum: EDC390B751430B326FC1B98159056819;2514.
  ) 
 Here is how much of TeX's memory you used:
- 30831 strings out of 474222
- 650374 string characters out of 5748734
- 1951975 words of memory out of 5000000
- 52426 multiletter control sequences out of 15000+600000
- 596089 words of font info for 109 fonts, out of 8000000 for 9000
+ 32419 strings out of 474222
+ 680724 string characters out of 5748734
+ 1967975 words of memory out of 5000000
+ 53989 multiletter control sequences out of 15000+600000
+ 600133 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,10n,103p,1190b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{https://ardupilot.org/} has been referenced but doe
-s not exist, replaced by a fixed one
-
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
-mr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (3 pages, 1968972 bytes).
+ 101i,12n,103p,1190b,1015s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
+utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (4 pages, 1993341 bytes).
 PDF statistics:
- 173 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
