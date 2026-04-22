@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2025/Homebrew)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: IEEEtran.bst
@@ -14,6 +14,7 @@ Warning--entry type for "missionplanner" isn't style-file defined
 --line 9 of file references.bib
 Warning--entry type for "dabble" isn't style-file defined
 --line 25 of file references.bib
+Warning--I didn't find a database entry for ""
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -60,4 +61,4 @@ warning$ -- 0
 while$ -- 10
 width$ -- 9
 write$ -- 111
-(There were 3 warnings)
+(There were 4 warnings)

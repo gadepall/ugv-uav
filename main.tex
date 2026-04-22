@@ -65,11 +65,15 @@ In this paper, we integrate various components of an unmanned air vehicle (UAV) 
 
 \section{Introduction}
 
-Our goal is to take a drone with a standard multicopter architecture, and try to integrate each component, part by part into a ground vehicle. Traditional UAVs rely on high-RPM brushless motors, Electronic Speed Controllers (ESCs), and specialized flight controllers. While components like the power delivery systems and radio transmitters are universally applicable, others—such as the motor control mechanisms—require adaptation for ground use.
+%Our goal is to take a drone with a standard multicopter architecture, and try to integrate each component, part by part into a ground vehicle. Traditional UAVs rely on high-RPM brushless motors, Electronic Speed Controllers (ESCs), and specialized flight controllers. While components like the power delivery systems and radio transmitters are universally applicable, others—such as the motor control mechanisms—require adaptation for ground use.
 
-Recent advancements in autonomous systems emphasize the development of unified, cross-domain control architectures. While open-source flight stacks like ArduPilot and Pixhawk are ubiquitous in Unmanned Aerial Vehicles (UAVs), their robust navigation and telemetry algorithms are increasingly being adapted to retrofit off-the-shelf ground chassis into autonomous Unmanned Ground Vehicles (UGVs) \cite{darweesh2024initial}. Leveraging a shared architectural ecosystem not only reduces development overhead but also facilitates seamless heterogeneous collaboration, allowing UAVs and UGVs to operate within the same centralized mission framework \cite{castro2024heterogeneous}. However, directly translating a flight-oriented architecture to a ground-based platform introduces significant hardware-level challenges. Specifically, the high-frequency PWM signals designed for aerial Electronic Speed Controllers (ESCs) must be computationally translated into logic-level inputs suitable for standard UGV motor drivers \cite{silva2019implementation}. Our work addresses this gap by detailing the exact middleware translation required to bridge these two domains.
+Recent advancements in autonomous systems emphasize the development of unified, cross-domain control architectures. While open-source flight stacks like ArduPilot \cite{} and Pixhawk \cite{} are ubiquitous in Unmanned Aerial Vehicles (UAVs), their robust navigation and telemetry algorithms are increasingly being adapted to retrofit off-the-shelf ground chassis into autonomous Unmanned Ground Vehicles (UGVs) \cite{darweesh2024initial}. Leveraging a shared architectural ecosystem not only reduces development overhead but also facilitates seamless heterogeneous collaboration, allowing UAVs and UGVs to operate within the same centralized mission framework \cite{castro2024heterogeneous}. However, directly translating a flight-oriented architecture to a ground-based platform introduces significant hardware-level challenges. Specifically, the high-frequency PWM signals designed for aerial Electronic Speed Controllers (ESCs) must be computationally translated into logic-level inputs suitable for standard UGV motor drivers \cite{silva2019implementation}. 
+Our work addresses this gap by detailing the exact middleware translation required to bridge these two domains.
+\section{System Overview}
 
-\bigskip
+Fig \ref{fig:da} lists the various components of a drone (UGV) platform based on ArduPilot.  To successfully transition from flight to ground, the components shown in Fig \ref{fig:da} must be re-routed. Fig. \ref{fig:ugv_arch} is the final, unified UGV architecture showing the new data and power workflows, utilizing the ArduPilot, an ESP32 translator, an LM2596 buck converter, and L298N drivers. 
+    Table \ref{tab:components} includes a comperhensive list of all components required for UAV-UGV transition.
+%\bigskip
     \begin{figure}[H]
     \resizebox{0.95\columnwidth}{!}{
     \begin{tikzpicture}[
@@ -129,11 +133,9 @@ Recent advancements in autonomous systems emphasize the development of unified, 
 \label{fig:da}
 \end{figure}
 
-Keeping the differences in mind, we integrate each of these components into the ground vehicle framework.
+%Keeping the differences in mind, we integrate each of these components into the ground vehicle framework.
 
 % --- NEW CONTENT ADDED: System Overview section to hold the new unified diagram ---
-\section{System Overview}
-To successfully transition from flight to ground, the components shown in Fig \ref{fig:da} must be re-routed. Below is the final, unified UGV architecture showing the new data and power workflows, utilizing the ArduPilot, an ESP32 translator, an LM2596 buck converter, and L298N drivers. 
 
 \begin{figure}[H]
 \resizebox{0.95\columnwidth}{!}{
@@ -245,24 +247,35 @@ To successfully transition from flight to ground, the components shown in Fig \r
     }
 \end{table}
 
-\section{Power}
+\subsection{Power}
 The same DC power source can be used for both frameworks. The 3S LiPo batteries used in the system are highly versatile.
-
 % --- NEW CONTENT ADDED: Transformation context for Power (SimonK, LM2596, 5V routing, Common Ground) ---
-In the original UAV architecture, power distribution relied heavily on SimonK 30A BLDC Electronic Speed Controllers (ESCs), which routed high current directly to brushless motors while often supplying low voltage to the flight controller via a built-in Battery Eliminator Circuit (BEC) or a dedicated UAV Power Module. 
+In the original UAV architecture, power distribution relied heavily on SimonK 30A BLDC Electronic Speed Controllers (ESCs) \cite{}, which routed high current directly to brushless motors while often supplying low voltage to the flight controller via a built-in Battery Eliminator Circuit (BEC) or a dedicated UAV Power Module. 
 
-Transforming this for a UGV required a complete power system overhaul. We discarded the SimonK ESCs (as we used different motors here). Instead, the 11.1V output from the 3S LiPo battery is split into two distinct paths. The first path supplies raw 11.1V power directly to the L298N motor driver to satisfy the high-current demands of the geared ground motors. For the second path, we integrated an LM2596 buck converter to step the 11.1V down to a highly stable 5V rail. We used $2000\mu F$ decoupling capacitors. This 5V line is fed directly into the 5V/VIN pin of the ESP32 and is also used to power the APM 2.8 flight controller and its attached peripherals (such as the GPS module). Crucially, because the LM2596 shares a single ground rail, we established a strict common ground connecting the 3S LiPo, the buck converter, the ESP32, the L298N, and the APM 2.8 to prevent logic level drifting and signal errors across the vehicle.
+Transforming this for a UGV required a complete power system overhaul. We discarded the SimonK ESCs (as we used different motors here). Instead, the 11.1V output from the 3S LiPo battery is split into two distinct paths as shown in Fig. \ref{}. The first path supplies raw 11.1V power directly to the L298N motor driver to satisfy the high-current demands of the geared ground motors. For the second path, we integrated an LM2596 buck converter to step the 11.1V down to a highly stable 5V rail. We used $2000\mu F$ decoupling capacitors. This 5V line is fed directly into the 5V/VIN pin of the ESP32 and is also used to power the APM 2.8 flight controller and its attached peripherals (such as the GPS module). Crucially, because the LM2596 shares a single ground rail, we established a strict common ground connecting the 3S LiPo, the buck converter, the ESP32, the L298N, and the APM 2.8 to prevent logic level drifting and signal errors across the vehicle.
 % --- END NEW CONTENT ---
-
-\section{Control}
-Because the ground vehicle operates with reduced physical degrees of freedom, the control inputs are drastically simplified. When flying a drone, the system requires continuous input across at least four to six radio channels to manage complex multi-axis flight dynamics and flight modes. For the UGV twin, these multi-axis commands are reduced to just two essential channels: throttle (forward/reverse speed) and steering (left/right turning). The remaining channels provided by the FS-i6 radio are effectively bypassed, streamlining the overall control logic before it even reaches the motor drivers.
-\subsection{Integration with L298N Motor Drivers}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figs/l298n.png}
     \caption{L298N Motor Driver}
     \label{fig:l298n}
 \end{figure}
+
+\subsection{Communication:Flysky Radio System}
+The Flysky FS-i6\cite{flysky} is a 2.4 GHz wireless radio transmitter used for remote control of electronic systems such as drones, robots, RC cars, airplanes, and embedded systems. It is part of the Flysky radio control ecosystem and works together with compatible receivers (such as FS-iA6 or FS-iA6B) to transmit user commands wirelessly to a microcontroller or motor control system. The FS-i6 converts physical inputs from joysticks, switches, and knobs into digital signals, which are transmitted using the AFHDS 2A (Automatic Frequency Hopping Digital System) protocol. The receiver connected to the robot or vehicle interprets these signals and generates corresponding control signals to motors, servos, or microcontrollers.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figs/flysky.jpg}
+    \caption{FlySky Remote}
+    \label{fig:flysky}
+\end{figure}
+
+The FS-i6 radio system can be reliably used in both the drone framework and the ground vehicle framework. The range of this system is around 500m-1000m in clear air (without obstacles in between). We have tested the radio system up to 70m.
+
+\subsection{Control}
+Because the ground vehicle operates with reduced physical degrees of freedom, the control inputs are drastically simplified. When flying a drone, the system requires continuous input across at least four to six radio channels to manage complex multi-axis flight dynamics and flight modes. For the UGV twin, these multi-axis commands are reduced to just two essential channels: throttle (forward/reverse speed) and steering (left/right turning). The remaining channels provided by the FS-i6 radio are effectively bypassed, streamlining the overall control logic before it even reaches the motor drivers.
+\subsection{Integration with L298N Motor Drivers}
 
 The system architecture follows a sequential control flow from the APM 2.8 flight controller, through an ESP32 microcontroller, to an L298N motor driver\cite{l298n}, which ultimately powers the DC motors. 
 
@@ -275,19 +288,6 @@ This highlights a major control paradigm shift between domains. In a UAV, the AP
 
 \subsubsection{\textbf{ESP32 as a Middleware Controller}}
 To bridge this gap, the ESP32 functions as a dedicated signal translator and skid steering mixer. Since the ArduPilot simply passes through raw throttle and steering channel outputs, the ESP32 continuously reads these incoming pulse widths and maps them into directional commands (e.g., 1000–1450 µs for reverse, 1450–1550 µs as a neutral deadband, and 1550–2000 µs for forward). Concurrently, the middleware mathematically combines these two signals to calculate proportional PWM duty cycles for the left and right motor banks. For example, a simultaneous forward and right-steering input prompts the code to increase the left L298N channels while reducing the right, seamlessly executing precise differential drive locomotion.
-
-\section{Communication}
-\subsection{Flysky Radio System}
-The Flysky FS-i6\cite{flysky} is a 2.4 GHz wireless radio transmitter used for remote control of electronic systems such as drones, robots, RC cars, airplanes, and embedded systems. It is part of the Flysky radio control ecosystem and works together with compatible receivers (such as FS-iA6 or FS-iA6B) to transmit user commands wirelessly to a microcontroller or motor control system. The FS-i6 converts physical inputs from joysticks, switches, and knobs into digital signals, which are transmitted using the AFHDS 2A (Automatic Frequency Hopping Digital System) protocol. The receiver connected to the robot or vehicle interprets these signals and generates corresponding control signals to motors, servos, or microcontrollers.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\columnwidth]{figs/flysky.jpg}
-    \caption{FlySky Remote}
-    \label{fig:flysky}
-\end{figure}
-
-The FS-i6 radio system can be reliably used in both the drone framework and the ground vehicle framework. The range of this system is around 500m-1000m in clear air (without obstacles in between). We have tested the radio system up to 70m.
 
 \section{Mobility}
 Due to low torque and high RPM, we concluded that the drone motors cannot directly be used in a ground vehicle framework. Though it might work for certain surfaces, we did not test the effectiveness of this approach. We instead use geared DC Motors (via a motor driver). 
