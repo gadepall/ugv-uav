@@ -414,12 +414,12 @@ We have hence successfully translated the entire UAV architecture into an equiva
 \label{app:misplan}
 \begin{enumerate}
 	\item Open Mission Planner \cite{missionplanner},
-	    (you might have to use an older version for better compatibility) and flash the \texttt{ArduRover v2.5.1} firmware onto the APM 2.8 flight controller. Custom C++ code is not required for the APM, as the ArduPilot ecosystem provides precompiled stacks in the \href{https://ardupilot.org/}{ArduPilot website}.
+	    (you might have to use an older version for better compatibility) and flash the \texttt{ArduRover v2.5.1} firmware onto the APM 2.8 flight controller. Custom C++ code is not required for the APM, as the ArduPilot ecosystem provides precompiled stacks in the \href{https://firmware.ardupilot.org/Rover/}{ArduPilot firmware website}.
     \item Calibrate radio, compass, GPS, accelerometer and servo output in Mission Planner.
     \item Wire APM 2.8 as follows:
     \begin{itemize}
         \item Inputs: Connect radio receiver and GPS/Compass module. % Note: Power is supplied by LM2596.
-        \item Outputs: Connect signal lines 1 and 3 of the radio receiver to the ESP32. 
+        \item Outputs: Connect signal lines 1 and 3 of the radio receiver to the GPIO pins 34 and 35 of the ESP32. The ESP32 has to be connected to the motor drivers via the GPIO pins 26,25 and 33,32. The enable pins of the L298N motor driver have to be connected to pins 13 and 14 (for PWM). 
     \end{itemize}
     \item Upload the middleware code into the ESP32 from the following repository:
 \end{enumerate}
