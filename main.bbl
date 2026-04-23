@@ -21,6 +21,18 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{ardupilot}
+\BIBentryALTinterwordspacing
+{ArduPilot Development Team}, ``Ardupilot: Open source autopilot software,''
+  2024, accessed: 2024-05-19. [Online]. Available: \url{https://ardupilot.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{pixhawk}
+\BIBentryALTinterwordspacing
+{PX4 Autopilot Dev Team}. (2024) Px4 autopilot user guide. Accessed:
+  2024-04-23. [Online]. Available: \url{https://docs.px4.io/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{darweesh2024initial}
 C.~L. Darweesh \emph{et~al.}, ``Initial prototyping of a low-cost unoccupied
   ground vehicle platform for crop problem risk and severity mapping in
@@ -42,6 +54,14 @@ G.~Silva, ``Implementation of an autopilot for uav/ugv systems based on android
   integration of autopilot logic, middleware, and standard microcontroller
   hardware for cross-domain vehicles.
 
+\bibitem{simonkesc}
+\BIBentryALTinterwordspacing
+{RC Timer}, ``30a bldc electronic speed controller datasheet,'' RC Timer Motors
+  \& Intelligence Technology, Tech. Rep., 2011, technical specifications for
+  30A hardware variant. [Online]. Available:
+  \url{https://www.sarkanyellato.hu/wp-content/uploads/2011/10/RC-Timer-10.18.30.40A-ESC-Instruction.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{flysky}
 \BIBentryALTinterwordspacing
 {FlySky RC}, ``Flysky radio control systems,'' 2024, accessed: 2024-05-19.
@@ -53,12 +73,6 @@ G.~Silva, ``Implementation of an autopilot for uav/ugv systems based on android
 {STMicroelectronics}, \emph{L298 Dual Full-Bridge Driver Datasheet},
   STMicroelectronics, 2000, rev. 13. Accessed: 2026-03-29. [Online]. Available:
   \url{https://www.st.com/resource/en/datasheet/l298.pdf}
-\BIBentrySTDinterwordspacing
-
-\bibitem{ardupilot}
-\BIBentryALTinterwordspacing
-{ArduPilot Development Team}, ``Ardupilot: Open source autopilot software,''
-  2024, accessed: 2024-05-19. [Online]. Available: \url{https://ardupilot.org/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{missionplanner}
