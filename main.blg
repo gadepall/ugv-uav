@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2025/Homebrew)
+This is BibTeX, Version 0.99d (TeX Live 2022/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: IEEEtran.bst
@@ -12,50 +12,52 @@ Warning--entry type for "ardupilot" isn't style-file defined
 --line 1 of file references.bib
 Warning--entry type for "missionplanner" isn't style-file defined
 --line 26 of file references.bib
+Warning--entry type for "ardufirmware" isn't style-file defined
+--line 34 of file references.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 9 entries,
+You've used 10 entries,
             4087 wiz_defined-function locations,
-            876 strings with 9040 characters,
-and the built_in function-call counts, 4433 in all, are:
-= -- 414
-> -- 49
+            881 strings with 9137 characters,
+and the built_in function-call counts, 4845 in all, are:
+= -- 450
+> -- 53
 < -- 5
-+ -- 24
-- -- 12
-* -- 196
-:= -- 853
-add.period$ -- 19
-call.type$ -- 9
-change.case$ -- 17
++ -- 26
+- -- 13
+* -- 212
+:= -- 935
+add.period$ -- 21
+call.type$ -- 10
+change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 351
-empty$ -- 353
-format.name$ -- 15
-if$ -- 969
+cite$ -- 10
+duplicate$ -- 384
+empty$ -- 390
+format.name$ -- 16
+if$ -- 1058
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 79
-newline$ -- 62
-num.names$ -- 9
-pop$ -- 171
+int.to.str$ -- 10
+missing$ -- 87
+newline$ -- 67
+num.names$ -- 10
+pop$ -- 193
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 358
+skip$ -- 389
 stack$ -- 0
-substring$ -- 45
-swap$ -- 238
+substring$ -- 48
+swap$ -- 257
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 9
+type$ -- 10
 warning$ -- 0
-while$ -- 11
-width$ -- 10
-write$ -- 124
-(There were 2 warnings)
+while$ -- 12
+width$ -- 12
+write$ -- 135
+(There were 3 warnings)
