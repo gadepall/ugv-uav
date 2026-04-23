@@ -256,10 +256,11 @@ In the original UAV architecture, power distribution relied heavily on SimonK 30
     \centering
     \includegraphics[width=\columnwidth]{figs/power_distribution.png}
     \caption{Power distribution visualisation}
-    \label{fig:l298n}
+    \label{fig:l298n-power}
 \end{figure}
 
-Transforming this for a UGV required a complete power system overhaul. We discarded the SimonK ESCs (as we used different motors here). Instead, the 11.1V output from the 3S LiPo battery is split into two distinct paths as shown in Fig. \ref{}. The first path supplies raw 11.1V power directly to the L298N motor driver to satisfy the high-current demands of the geared ground motors. For the second path, we integrated an LM2596 buck converter to step the 11.1V down to a highly stable 5V rail. We used $2000\mu F$ decoupling capacitors. This 5V line is fed directly into the 5V/VIN pin of the ESP32 and is also used to power the APM 2.8 flight controller and its attached peripherals (such as the GPS module). Crucially, because the LM2596 shares a single ground rail, we established a strict common ground connecting the 3S LiPo, the buck converter, the ESP32, the L298N, and the APM 2.8 to prevent logic level drifting and signal errors across the vehicle.
+Transforming this for a UGV required a complete power system overhaul. We discarded the SimonK ESCs (as we used different motors here). Instead, the 11.1V output from the 3S LiPo battery is split into two distinct paths as shown in Fig. 
+    \ref{fig:l298n-power}. The first path supplies raw 11.1V power directly to the L298N motor driver to satisfy the high-current demands of the geared ground motors. For the second path, we integrated an LM2596 buck converter to step the 11.1V down to a highly stable 5V rail. We used $2000\mu F$ decoupling capacitors. This 5V line is fed directly into the 5V/VIN pin of the ESP32 and is also used to power the APM 2.8 flight controller and its attached peripherals (such as the GPS module). Crucially, because the LM2596 shares a single ground rail, we established a strict common ground connecting the 3S LiPo, the buck converter, the ESP32, the L298N, and the APM 2.8 to prevent logic level drifting and signal errors across the vehicle.
 % --- END NEW CONTENT ---
 \begin{figure}[H]
     \centering
@@ -412,12 +413,13 @@ We have hence successfully translated the entire UAV architecture into an equiva
 \section{}
 \label{app:misplan}
 \begin{enumerate}
-    \item Open Mission Planner (you might have to use an older version for better compatibility) and flash the \texttt{ArduRover v2.5.1} firmware onto the APM 2.8 flight controller. Custom C++ code is not required for the APM, as the ArduPilot ecosystem provides precompiled stacks in the \href{https://ardupilot.org/}{ArduPilot website}.
+	\item Open Mission Planner \cite{missionplanner},
+	    (you might have to use an older version for better compatibility) and flash the \texttt{ArduRover v2.5.1} firmware onto the APM 2.8 flight controller. Custom C++ code is not required for the APM, as the ArduPilot ecosystem provides precompiled stacks in the \href{https://ardupilot.org/}{ArduPilot website}.
     \item Calibrate radio, compass, GPS, accelerometer and servo output in Mission Planner.
     \item Wire APM 2.8 as follows:
     \begin{itemize}
         \item Inputs: Connect radio receiver and GPS/Compass module. % Note: Power is supplied by LM2596.
-        \item Outputs: Connect signal lines of 1 and 3 to ESP32. 
+        \item Outputs: Connect signal lines 1 and 3 of the radio receiver to the ESP32. 
     \end{itemize}
     \item Upload the middleware code into the ESP32 from the following repository:
 \end{enumerate}
